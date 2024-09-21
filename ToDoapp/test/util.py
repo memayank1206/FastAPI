@@ -10,11 +10,15 @@ from ..models import Todos, Users
 from ..routers.auth import bcrypt_context
 
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./testdb.db"
+# SQLALCHEMY_DATABASE_URL = "sqlite:///./testdb.db"
+#
+# engine = create_engine(
+#     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}, poolclass = StaticPool
+# )
 
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}, poolclass = StaticPool
-)
+SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:heythere@localhost/TodoApplicationDatabase'
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
